@@ -75,6 +75,8 @@ flutter:
     - assets/images/Divider.png
     - assets/images/apple.png
     - assets/images/google.png
+    - assets/images/user.jpg
+    - assets/images/Checklist.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

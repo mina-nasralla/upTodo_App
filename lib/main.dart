@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uptodo_list_app/Core/constants.dart';
-import 'package:uptodo_list_app/Features/Splash_Screen/Splash_Screen.dart';
-import 'package:uptodo_list_app/Features/onboarding_screen/presentaion/start_screen.dart';
+import 'package:uptodo_list_app/Features/home_layout/Presentation/home_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,13 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'UpTodo',
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor:bgcolor,
           textTheme: GoogleFonts.latoTextTheme(
             ThemeData.dark().textTheme
           ),),
-      home: const SplashScreen(),
+      home: const HomeView(),
     );
   }
 }
