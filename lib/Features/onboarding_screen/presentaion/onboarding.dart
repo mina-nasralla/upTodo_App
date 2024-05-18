@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:uptodo_list_app/Features/onboarding_screen/button_check.dart';
-import 'package:uptodo_list_app/Features/onboarding_screen/onboarding_item.dart';
-import 'package:uptodo_list_app/Features/onboarding_screen/start_screen.dart';
+import 'package:uptodo_list_app/Features/onboarding_screen/presentaion/button_check.dart';
+import 'package:uptodo_list_app/Features/onboarding_screen/presentaion/onboarding_item.dart';
+import 'package:uptodo_list_app/Features/onboarding_screen/presentaion/start_screen.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -26,8 +26,10 @@ class _OnboardingState extends State<Onboarding> {
               children: [
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const StartScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const StartScreen()));
                     },
                     child: Text(
                       'Skip'.toUpperCase(),
@@ -36,9 +38,7 @@ class _OnboardingState extends State<Onboarding> {
               ],
             ),
             SizedBox(
-              height: MediaQuery
-                  .sizeOf(context)
-                  .height * .65,
+              height: MediaQuery.sizeOf(context).height * .65,
               child: PageView.builder(
                   onPageChanged: (int index) {
                     setState(() {
@@ -85,10 +85,14 @@ class _OnboardingState extends State<Onboarding> {
                       child: Text(
                         'Back'.toUpperCase(),
                         style:
-                        const TextStyle(color: Colors.grey, fontSize: 16),
+                            const TextStyle(color: Colors.grey, fontSize: 16),
                       )),
                   const Spacer(),
-                  CheckButton(showStart: showstart,boardcontroller: boardcontroller,)                ],
+                  CheckButton(
+                    showStart: showstart,
+                    boardcontroller: boardcontroller,
+                  )
+                ],
               ),
             ),
           ],
@@ -97,5 +101,3 @@ class _OnboardingState extends State<Onboarding> {
     );
   }
 }
-
-

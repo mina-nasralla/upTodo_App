@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uptodo_list_app/Core/constants.dart';
 import 'package:uptodo_list_app/Features/Splash_Screen/Splash_Screen.dart';
-import 'package:uptodo_list_app/Features/onboarding_screen/onboarding.dart';
+import 'package:uptodo_list_app/Features/onboarding_screen/presentaion/start_screen.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,40 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:uptodo_list_app/Core/constants.dart';
 
-class custom_button extends StatelessWidget {
-   custom_button({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
-     required this.width,
-     required this.hieght,
-     required this.onpressed,
-     required this.buttontext,
-     required this.backgroundcolor,
+    required this.width,
+    required this.height, // Corrected spelling
+    required this.onPressed,
+    required this.buttonText, // Corrected spelling and capitalization
+    required this.backgroundColor,
+    this.icon, // Using a more descriptive name
   });
 
   final double width;
-  final double hieght;
-  final String buttontext;
-  VoidCallback onpressed;
-   final Color backgroundcolor;
+  final double height;
+  final String buttonText;
+  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Widget? icon; // Optional icon widget
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: hieght,
+      height: height,
       child: ElevatedButton(
-        onPressed: onpressed,
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
           foregroundColor: Colors.white,
-          backgroundColor: backgroundcolor,
-          side:const BorderSide( // Added for border
-            color: primcolor, // Matches background color
-            width: 1.0, // Adjust border width as needed
+          backgroundColor: backgroundColor,
+          side: const BorderSide(
+            color: primcolor,
+            width: 1.0,
           ),
         ),
-        child: Text(
-          buttontext.toUpperCase(), style: const TextStyle(fontSize: 14),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) // Conditionally add icon to avoid null errors
+              Row(
+                children: [
+                  icon!,
+                  const SizedBox(width: 10),
+
+                ],
+              ),
+
+            Text(
+              buttonText.toUpperCase(),
+              style: const TextStyle(fontSize: 14),
+            ),
+          ],
         ),
       ),
     );
