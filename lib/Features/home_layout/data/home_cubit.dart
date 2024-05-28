@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uptodo_list_app/Features/add_task_screen/presentation/task_screen.dart';
+import 'package:uptodo_list_app/Features/categories_screen/presentation/categories.dart';
 import 'package:uptodo_list_app/Features/home_index/presentaion/home.dart';
 import 'package:uptodo_list_app/Features/home_layout/Presentation/calendar.dart';
-import 'package:uptodo_list_app/Features/home_layout/Presentation/focus.dart';
-import 'package:uptodo_list_app/Features/home_layout/Presentation/profile.dart';
+import 'package:uptodo_list_app/Features/Profile_screen/presentation/profile.dart';
 
 
 part 'home_state.dart';
@@ -19,14 +18,15 @@ class HomeCubit extends Cubit<HomeState> {
   List<Widget> Screens = [
     const Home(),
     const Calendar(),
-    const AddTaskScreen(),
-    const Focusscreen(),
+    const SizedBox.shrink(),  // This makes the element at index 2 empty
+    const CategoriesScreen(),
     const Profile(),
   ];
 
   void ChangeBottomNavBar(int index) {
-    currentindex = index;
-    emit(BottomNavBar());
+    if (index!=2){
+      currentindex = index;
+      emit(BottomNavBar());}
   }
 
 }

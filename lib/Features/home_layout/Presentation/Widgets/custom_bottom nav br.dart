@@ -1,8 +1,9 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uptodo_list_app/Core/constants.dart';
-import 'package:uptodo_list_app/Features/add_task_screen/presentation/task_screen.dart';
+import 'package:uptodo_list_app/Features/home_layout/Presentation/Widgets/custom_floating.dart';
 import 'package:uptodo_list_app/Features/home_layout/data/home_cubit.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -36,39 +37,22 @@ class CustomNavBar extends StatelessWidget {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.home_outlined), label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.calendar_today),
-                    label: 'Calendar'),
+                    icon: Icon(Icons.file_download_done),
+                    label: 'Done Tasks'),
                 BottomNavigationBarItem(
-                    icon: SizedBox(width: 20), label: ''), // Dummy item
+                    icon: SizedBox.shrink(), label: ''), // Dummy item
                 BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.time), label: 'Focus'),
+                    icon: Icon(Icons.category_outlined), label: 'Categories'),
                 BottomNavigationBarItem(
                     icon: Icon(CupertinoIcons.profile_circled),
                     label: 'Profile'),
               ],
             ),
-            Positioned(
-              bottom: 35, // Adjust the position as needed
-              left: MediaQuery.of(context).size.width / 2 -
-                  28, // Adjust for centering
-              child: FloatingActionButton(
-                foregroundColor: Colors.white,
-                backgroundColor: primcolor,
-                // Replace with your color variable
-                shape: const CircleBorder(),
-                child: const Icon(
-                  CupertinoIcons.add,
-                  size: 22,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddTaskScreen()));
-                },
-              ),
-            ),
+            const FloatButton(),
           ],
         );
       },
     );
   }
 }
+
