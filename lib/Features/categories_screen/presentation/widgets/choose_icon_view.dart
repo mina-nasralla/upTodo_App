@@ -92,6 +92,7 @@ class ChooseIconWidget extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         final cubit = CategoryCubit.get(context);
+        IconData icon = IconData(cubit.choosedicon, fontFamily: 'MaterialIcons');
         return InkWell(
             onTap: () {
               showDialog(
@@ -107,7 +108,8 @@ class ChooseIconWidget extends StatelessWidget {
                           return IconButton(
                             icon: Icon(icons[index], size: 30.0),
                             onPressed: () {
-                              cubit.choose(choosed: icons[index]);
+                              cubit.choose(choosed: icons[index].codePoint);
+                              print(icons[index].codePoint);
                               Navigator.of(context).pop();
                             },
                           );
@@ -126,7 +128,7 @@ class ChooseIconWidget extends StatelessWidget {
                 },
               );
             },
-            child: cubit.choosedicon != null
+            child: cubit.choosedicon != 0
                 ? Container(
                 width: 50,
                 height: 45,
@@ -134,7 +136,7 @@ class ChooseIconWidget extends StatelessWidget {
                   color: seccolor,
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Icon(cubit.choosedicon,size: 40,))
+                child: Icon(icon,size: 40,))
                 : Container(
                   width: 154,
                   height: 37,

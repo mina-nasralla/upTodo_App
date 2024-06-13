@@ -97,7 +97,7 @@ class CategoryIconDialog extends StatelessWidget {
                 return IconButton(
                   icon: Icon(icons[index], size: 30.0),
                   onPressed: () {
-                    CategoryCubit.get(context).choosedicon=icons[index];
+                    CategoryCubit.get(context).choosedicon= icons[index] as int;
                     print('Icon $index selected');
                     print(CategoryCubit.get(context).choosedicon);
                     Navigator.of(context).pop();

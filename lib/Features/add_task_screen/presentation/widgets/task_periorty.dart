@@ -9,6 +9,8 @@ class TaskPeriorty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         const Icon(Icons.flag_outlined),
         const SizedBox(width: 8),

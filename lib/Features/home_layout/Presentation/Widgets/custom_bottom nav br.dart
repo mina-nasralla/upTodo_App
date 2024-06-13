@@ -17,7 +17,6 @@ class CustomNavBar extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -26,10 +25,10 @@ class CustomNavBar extends StatelessWidget {
               iconSize: 30,
               unselectedFontSize: 12,
               selectedFontSize: 14,
+              backgroundColor:seccolor,
               selectedItemColor: Colors.white,
               elevation: 30,
               type: BottomNavigationBarType.fixed,
-              backgroundColor: seccolor,
               onTap: (index) {
                 cubit.ChangeBottomNavBar(index);
               },
@@ -38,14 +37,14 @@ class CustomNavBar extends StatelessWidget {
                     icon: Icon(Icons.home_outlined), label: 'Home'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.file_download_done),
-                    label: 'Done Tasks'),
+                    label: 'Done'),
                 BottomNavigationBarItem(
                     icon: SizedBox.shrink(), label: ''), // Dummy item
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.category_outlined), label: 'Categories'),
+                    icon: Icon(Icons.archive_outlined), label: 'Archive'),
                 BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.profile_circled),
-                    label: 'Profile'),
+                    icon: Icon(Icons.category_outlined),
+                    label: 'Categories'),
               ],
             ),
             const FloatButton(),

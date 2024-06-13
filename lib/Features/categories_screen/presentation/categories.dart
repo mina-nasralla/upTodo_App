@@ -5,13 +5,15 @@ import 'package:uptodo_list_app/Features/categories_screen/data/Cubit/category_c
 import 'category_view_body.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  CategoriesScreen({super.key});
+  // var formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CategoryCubit(),
+      create: (context) => CategoryCubit()..createDatabase(),
       child: Scaffold(
+        // key: formkey,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: const Text(
@@ -20,7 +22,7 @@ class CategoriesScreen extends StatelessWidget {
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
-        body: const CategoryViewBody(),
+        body: CategoryViewBody(),
       ),
     );
   }

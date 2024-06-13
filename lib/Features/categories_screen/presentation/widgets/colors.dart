@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uptodo_list_app/Features/categories_screen/data/Cubit/category_cubit.dart';
 
 class ColorList extends StatefulWidget {
-  const ColorList({Key? key}) : super(key: key);
+  const ColorList({super.key});
 
   @override
   _ColorListState createState() => _ColorListState();
@@ -51,39 +53,45 @@ class _ColorListState extends State<ColorList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      itemCount: colors.length,
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
-                    color: colors[index],
-                  ),
+    return BlocConsumer<CategoryCubit, CategoryState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: colors.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = index;
+                  CategoryCubit.get(context).choosedcolor = colors[selectedIndex!];
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: colors[index],
+                      ),
+                    ),
+                    if (selectedIndex == index)
+                      const Icon(
+                        Icons.check,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                  ],
                 ),
-                if (selectedIndex == index)
-                  const Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );
